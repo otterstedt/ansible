@@ -30,7 +30,7 @@ EXIT_STATUS=0
 # Check that all changed *.vault files are encrypted
 # read: -r do not allow backslashes to escape characters; -d delimiter
 while IFS= read -r -d $'\0' file; do
-	[[ "$file" != *.vault && "$file" != *.vault.yml ]] && continue
+	[[ "$file" != *.vault && "$file" != *vault.yml ]] && continue
 	# cut gets symbols 1-2
 	file_status=$(git status --porcelain -- "$file" 2>&1 | cut -c1-2)
 	file_status_index=${file_status:0:1}
